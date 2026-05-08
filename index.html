@@ -168,7 +168,7 @@
   /* TERMINAL OVERLAY (logo hold) */
   .terminal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 200; display: none; align-items: center; justify-content: center; }
   .terminal-overlay.open { display: flex; animation: fadeUp 0.3s ease; }
-  .terminal-box { font-family: 'DM Mono', monospace; background: #000; border: 1px solid var(--accent); border-radius: 8px; padding: 2.5rem; max-width: 500px; width: 90%; }
+  .terminal-box { font-family: 'DM Mono', monospace; background: #000; border: 1px solid var(--accent); border-radius: 8px; padding: 2.5rem; max-width: 500px; width: 90%; overflow: hidden; }
   .terminal-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; }
   .t-dot { width: 10px; height: 10px; border-radius: 50%; }
   .t-dot.red { background: #ff5f57; }
@@ -235,14 +235,14 @@
       <div class="t-dot red"></div>
       <div class="t-dot yellow"></div>
       <div class="t-dot green"></div>
-      <span class="terminal-title">ahmed@deployedengineer ~ </span>
+      <span class="terminal-title">~/deployedengineer ~ </span>
     </div>
     <div class="terminal-line"><span class="prompt">$ </span><span class="cmd">whoami</span></div>
     <div class="terminal-line out">Senior AI Engineer. Recovering over-engineer. LLM whisperer.</div>
     <div class="terminal-line"><span class="prompt">$ </span><span class="cmd">cat /etc/motto</span></div>
     <div class="terminal-line out">Ship it. Eval it. Ship it better.</div>
     <div class="terminal-line"><span class="prompt">$ </span><span class="cmd">ls ./superpowers</span></div>
-    <div class="terminal-line out">agentic_systems/&nbsp;&nbsp;rag_pipelines/&nbsp;&nbsp;stakeholder_wrangling/&nbsp;&nbsp;coffee_dependency.py</div>
+    <div class="terminal-line out" style="word-break:break-all;white-space:normal;">agentic_systems/&nbsp; rag_pipelines/&nbsp; stakeholder_wrangling/&nbsp; coffee_dependency.py</div>
     <div class="terminal-line"><span class="prompt">$ </span><span class="cmd">cat coffee_dependency.py</span></div>
     <div class="terminal-line out">while not deployed: coffee += 1 &nbsp;# O(∞)</div>
     <div class="terminal-line"><span class="prompt">$ </span><span class="cmd">echo $STATUS</span></div>
@@ -683,7 +683,7 @@
   // EASTER EGG 1 — CONSOLE MESSAGE
   console.log('%c Hey, you opened DevTools.', 'color: #00e5a0; font-size: 18px; font-weight: bold; font-family: monospace;');
   console.log('%c You\'re already my kind of engineer.', 'color: #666; font-size: 13px; font-family: monospace;');
-  console.log('%c If you\'re hiring: ahmed@deployedengineer.dev', 'color: #00e5a0; font-size: 12px; font-family: monospace;');
+  const _ce = ['ahmed','@','deployed','engineer','.','dev']; console.log('%c If you\'re hiring: ' + _ce.join(''), 'color: #00e5a0; font-size: 12px; font-family: monospace;');
 
   // EASTER EGG 2 — LOGO HOLD (2 seconds)
   const logo = document.getElementById('navLogo');
