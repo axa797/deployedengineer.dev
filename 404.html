@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>404 — Page Not Found</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='18' font-weight='bold' fill='%2300e5a0'>⌘</text></svg>" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0a0a;
+    color: #e8e8e8;
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .wrap {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+  }
+  .code {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: #1a1a1a;
+    position: relative;
+    margin-bottom: 1rem;
+    user-select: none;
+  }
+  .code::after {
+    content: '404';
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,229,160,0.2);
+    animation: glitch 4s ease infinite;
+  }
+  @keyframes glitch {
+    0%,90%,100% { transform: none; opacity: 1; }
+    92% { transform: translate(-3px, 1px); opacity: 0.8; }
+    94% { transform: translate(3px, -1px); opacity: 0.9; }
+    96% { transform: translate(-2px, 2px); opacity: 0.7; }
+    98% { transform: none; opacity: 1; }
+  }
+  .terminal {
+    background: #111;
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: left;
+  }
+  .line { font-size: 12px; line-height: 2.2; }
+  .prompt { color: #00e5a0; }
+  .cmd { color: #e8e8e8; }
+  .out { color: #555; }
+  .err { color: #ff6b6b; }
+  .home-btn {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    border-radius: 4px;
+    text-decoration: none;
+    background: #00e5a0;
+    color: #000;
+    font-weight: 500;
+    border: 1px solid #00e5a0;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+  }
+  .home-btn:hover { background: transparent; color: #00e5a0; }
+  .sub { font-size: 11px; color: #444; margin-top: 1.5rem; letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="code">404</div>
+
+  <div class="terminal">
+    <div class="line"><span class="prompt">$ </span><span class="cmd">GET /whatever-you-typed</span></div>
+    <div class="line err">Error: route not found in orchestrator</div>
+    <div class="line"><span class="prompt">$ </span><span class="cmd">grep -r "this page" ./deployedengineer.dev</span></div>
+    <div class="line out">no matches found</div>
+    <div class="line"><span class="prompt">$ </span><span class="cmd">whoami</span></div>
+    <div class="line out">lost user, probably followed a broken link</div>
+    <div class="line"><span class="prompt">$ </span><span class="cmd">cd ~</span></div>
+    <div class="line" style="color:#00e5a0;">redirecting you home...</div>
+  </div>
+
+  <a href="/" class="home-btn">← Back to home</a>
+  <div class="sub">// this page does not exist. the agent tried. it failed. it logged the error.</div>
+</div>
+
+<script>
+  // Auto redirect after 10s
+  let t = 10;
+  const btn = document.querySelector('.home-btn');
+  const timer = setInterval(() => {
+    t--;
+    btn.textContent = `← Back to home (${t}s)`;
+    if (t <= 0) { clearInterval(timer); window.location.href = '/'; }
+  }, 1000);
+  btn.addEventListener('click', () => clearInterval(timer));
+</script>
+</body>
+</html>
